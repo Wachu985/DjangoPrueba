@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Eliminar
+{% endblock titulo %}
+
+
+{% block content %}
+    {% include "includes/header.html" %}
+    <div class="grid-container">
+        <h1 class="cell">Crear Empleado</h1>
+        <div class="cell">
+            <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="large-6 cell">
+                    <label>Nombre: 
+                        {{form.first_name}}
+                    </label>
+                </div>
+                <div class="large-6 cell">
+                    <label>Apellido: 
+                        {{form.last_name}}
+                    </label>
+                </div>
+                <div class="large-6 cell">
+                    <label>Trabajo: 
+                        {{form.job}}
+                    </label>
+                </div>
+                <div class="large-6 cell">
+                    <label>Departamento: 
+                        {{form.departamento}}
+                    </label>
+                </div>
+                <div class="cell">
+                    <label>Habilidades: 
+                        {{form.habilidades}}
+                    </label>
+                </div> 
+                <div class="large-6 cell">
+                    <label>Foto: 
+                        {{form.avatar}}
+                    </label>
+                </div>
+                <div class="cell">
+                    <button class="button success" type="submit">Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+
+

@@ -1,0 +1,18 @@
+<h1>Listado de Habilidades</h1>
+<h2>Buscar Usuario</h2>
+
+<form method="GET">{% csrf_token %}
+    <input type="text" id="id" name="id" placeholder="Ingrese el id">
+    <button type="submit">Buscar</button>
+</form>
+
+<h3>Habilidades:</h3>
+<ul>
+    {% if object_list %}
+        {% for object in object_list %}
+            <li>{{object}}</li>
+        {% endfor %}
+    {% else %}
+        <p>NO SE ENCONTRARON ELEMENTOS</p>
+    {% endif %}
+</ul>

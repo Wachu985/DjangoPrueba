@@ -1,0 +1,11 @@
+<h1>Listado de Empleados por Trabajo</h1>
+
+<ul>
+    {% if object_list %}
+        {% for object in object_list %}
+            <li>{{object}}</li>
+        {% endfor %}
+    {% else %}
+        <p>NO SE ENCONTRARON ELEMENTOS</p>
+    {% endif %}
+</ul>

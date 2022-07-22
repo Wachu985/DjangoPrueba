@@ -1,0 +1,18 @@
+<h1>Buscar Empleados por Palabra Clave</h1>
+
+<form method="get">{% csrf_token %}
+    <input type="text" id="kword" name="kword" placeholder="Ingrese Nombre">
+    <button type="submit">Buscar</button>
+</form>
+
+<h2>Lista de Resultados</h2>
+<ul>
+    {% if object_list %}
+        {% for object in object_list %}
+            <li>{{object}}</li>
+        {% endfor %}
+    {% else %}
+        <p>NO SE EXISTEN ELEMENTOS</p>
+    {% endif %}
+    
+</ul>

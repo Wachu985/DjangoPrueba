@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Lista de Empleados Administrador
+{% endblock titulo %}
+
+
+{% block content %}
+    {% include "includes/header.html" %}
+    <div class="grid-container">
+        <div class="grid-x">
+            <h1 class="cell">Listado de Empleados Registrados</h1>
+            <div class="cell">
+                <table>
+                    <thead>
+                      <tr>
+                        <th width="200">ID</th>
+                        <th>Nombres</th>
+                        <th width="150">Apellidos</th>
+                        <th width="150">Departamento</th>
+                        <th width="150">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for object in object_list %}
+                            <tr>
+                                <td>{{object.id}}</td>
+                                <td>{{object.first_name}}</td>
+                                <td>{{object.last_name}}</td>
+                                <td>{{object.departamento.name}}</td>
+                                <td>
+                                    <a class="button success " href="{% url 'persona_app:modificar' object.id %}">Editar</a>
+                                </td>
+                                <td><a class="button alert " href="{% url 'persona_app:eliminar' object.id %}">Eliminar</a></td>
+                            </tr>
+                        {% endfor %}                      
+                    </tbody>
+                  </table>
+            </div>
+            <!-- Paginacion -->
+            <div class="cell">
+                {% if is_paginated %}
+                    <nav aria-label="Pagination">
+                    <ul class="pagination text-center">
+                        {% if page_obj.has_previous %}
+                            <li class="pagination-previous">
+                                <a href="?page={{page_obj.previous_page_number}}">Atras</a>
+                            </li>
+                        {% endif %}
+
+                        {% for pagina in paginator.page_range %}
+                            <!-- Comparacion -->
+                            {% if pagina == page_obj.number %} 
+                                <li class="current"><span class="show-for-sr">You're on page</span> {{pagina}}</li>
+                            {% else %}
+                                <li><a href="?page={{pagina}}" aria-label="Page 2">{{pagina}}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                            <li class="pagination-next"><a href="?page={{page_obj.next_page_number}}" aria-label="Next page">Siguiente</a></li>
+                        {% endif %}
+                    </ul>
+                  </nav>
+                {% endif %}  
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

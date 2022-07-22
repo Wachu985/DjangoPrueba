@@ -1,0 +1,19 @@
+<header>
+<div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">Empleados</li>
+        <li><a href="{% url 'persona_app:listar_all' %}">Listar</a></li>
+        <li><a href="{% url 'departamento_app:listar_depa' %}">Departamentos</a></li>
+        <li><a href="{% url 'persona_app:listar_admin' %}">Administrar</a></li>
+        <li><a href="{% url 'departamento_app:new_departamento' %}">Add-Departamento</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Buscar Empleado"></li>
+        <li><a type="button" class="button" href="{% url 'persona_app:registrar' %}">Registrar Nuevo</a></li>
+      </ul>
+    </div>
+</div>
+</header>
